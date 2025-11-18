@@ -1,0 +1,22 @@
+<nav class="navbar navbar-light bg-light rounded-0 d-flex justify-content-between align-items-center w-100" style="padding: 8px 16px; margin: 0; color: #0d6efd;">
+  <h1 class="navbar-brand mb-0">Wikinimous</h1>
+  <%= link_to "New article", new_article_path, class: "btn btn-primary", style: "background-color: #0d6efd; border-color: #0d6efd;" %>
+</nav>
+
+<div class="container col-12 col-md-6 mx-auto">
+  <% @articles.each do |article| %>
+    <article class="mb-4 text-start">
+      <h2 class="mb-2" style="font-size: 32px; font-family: 'Roboto', sans-serif; color: #007bff;">
+        <%= link_to article.title, article, class: "text-decoration-none", style: "color: #007bff;" %>
+      </h2>
+      <p class="mb-0 fw-light" style="text-align: justify; font-family: 'Roboto', sans-serif;">
+        <%= truncate(article.content, length: 200) %>
+      </p>
+    </article>
+  <% end %>
+
+  <% if @articles.empty? %>
+    <p>No articles yet.</p>
+  <% end %>
+</div>
+
